@@ -15,9 +15,12 @@ if ($_SESSION['logged_in']==True){
 <html>
 <head>
     <title>Link Upload</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href = css/bootstrap.min.css" rel = "stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <script src="https://kit.fontawesome.com/d977be036d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href = css/bootstrap.min.css" rel = "stylesheet">
+   <link rel="stylesheet" href="assets/css/main.css" />
     <script src="Resources/jquery/jquery-3.3.1.min.js"></script>
     <link rel="shortcut icon" href="Resources/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -46,17 +49,23 @@ if ($_SESSION['logged_in']==True){
     <link href="Resoures/styles.css" rel="stylesheet">
 
 </head>
-<body style = "background-image: url(banner.jpg);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-color: #464646;">
- <form action= "search.php" method="POST" >
-     <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4">
 
-        <!-- Navbar brand -->
+<body  style="background: url('images/banner.jpg');background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
+  <header id="header">
+        <div class="inner">
+          <a href="index.html" class="logo">CodeLab</a>
+          <nav id="nav">
+            <a href="home_employee.php"><i class="fas fa-home"></i>Home</a>
+            <a href="project_search.php"><i class="fas fa-project-diagram"></i>Projects</a>
+            <a href="account_employee.php"><i class="fas fa-user-circle" style="font-size: 20px;"></i></a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt" style="font-size: 20px;"></i></a>
+          </nav>
+        </div>
+      </header>
+      <section>
+      <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+ <form action= "search.php" method="POST" class="class-search">
 
-
-        <!-- Collapsible content -->
-        
-        <!-- Collapsible content -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 <div class='container'>
   <div class='content-wrapper'>
@@ -64,18 +73,15 @@ if ($_SESSION['logged_in']==True){
       <div class='col-xs-12 col-sm-12 col-md-8 col-lg-8' style="width:200px;font-size:25px;color:white;">
         Search your result Here
       </div>
-      <div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
 
-        <form class='navbar-form'>
-          <div class='input-group'>
-            <input class='form-control' type='text' name='search' placeholder='Search....' aria-label="Search" style="width:200px;"/>
-            <span class="input-group-btn">
-              <button  id = "submit" type='submit' class='btn btn-default' name="submit-search">
+        <form>
+          
+            <input class='form-control search-input' type='text' name='search' placeholder='Search....' aria-label="Search" style="width:200px;"/>
+              <button  id = "submit" type='submit' name="submit-search" class="btn">
                 <span class='glyphicon glyphicon-search'></span>
               </button>
-            </span>
 
-          </div>
+             
         </form>
 
       </div>
@@ -85,7 +91,7 @@ if ($_SESSION['logged_in']==True){
         
 
     </form>
-
+</section>
 <div class = "article-container">
     <?php
        /* $sql = "SELECT * FROM project_link";
@@ -105,7 +111,11 @@ if ($_SESSION['logged_in']==True){
 
 
     ?> 
-    </div>  
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>  
 </body><?php
 }
 else{
