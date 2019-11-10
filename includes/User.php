@@ -11,6 +11,7 @@ class User implements Observable{
 	protected $contact_no;
 	protected $notifications;
 	protected $system;
+	protected $acc_no;
 
 	public function __construct($firstname, $lastname, $email, $contact_no/*, $sys*/){
 		$this->firstname = $firstname;
@@ -26,6 +27,12 @@ class User implements Observable{
 	public function get_id(){
 		return $this->user_id;
 	}
+	public function set_acc_no($acc_no){
+		$this->acc_no = $acc_no;
+	}
+	public function get_acc_no(){
+		return $this->acc_no;
+	}
 	public function get_email(){
 		return $this->email;
 	}
@@ -36,7 +43,7 @@ class User implements Observable{
 	public function get_lastname(){
 		return $this->lastname;
 	}
-	public function get_contact_number(){
+	public function get_contact_no(){
 		return $this->contact_no;
 	}
 	public function send_notification($user,$msg){

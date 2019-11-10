@@ -14,7 +14,7 @@ session_start(); ?>
 		$current_user=$_SESSION['current_user'];
 		$email= $current_user->get_email();
 		//$to = $email;		// receiver email
-		$header = "From: "; 	// sender email
+		$header = "From: ashansilva.17@cse.mrt.ac.lk"; 	// sender email
 		$rand_num = substr(str_shuffle("0123456789"),0,5);
 		$msg = "Enter the received verification code at the webpage.\n\nVerification Code: " . "{$rand_num}";
 		if (mail($email, 'CodeLab - Email Verification', $msg, $header)){

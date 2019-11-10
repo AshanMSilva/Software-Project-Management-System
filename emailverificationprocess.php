@@ -25,7 +25,9 @@ session_start();
 				$firstname = $current_user->get_firstname();
 				$lastname = $current_user->get_lastname();
 				$contact_no = $current_user->get_contact_no();
-					$query = "INSERT INTO client (firstname, lastname, email, contact_no, pssword) VALUES('{$firstname}', '{$lastname}', '{$email}', {$contact_no}, '{$pssword}')";
+				$acc_no = $current_user->get_acc_no();
+
+					$query = "INSERT INTO client (firstname, lastname, email, contact_no, pssword, acc_no) VALUES('{$firstname}', '{$lastname}', '{$email}', {$contact_no}, '{$pssword}', '{$acc_no}')";
 					mysqli_query($connection, $query);
 					if (isset($_SESSION['current_user'])){
 						$_SESSION['logged_in'] = True;

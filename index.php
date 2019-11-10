@@ -133,11 +133,11 @@ if ( (!isset($_SESSION['logged_in'])) or $_SESSION['logged_in']==false): ?>
       <h1>Signup</h1>
       <div class="inline">
         <label for="firstname"><b>First Name</b></label><br>
-        <input type="text" placeholder="Enter First Name" name="first_name" required>
+        <input type="text" placeholder="Enter First Name" name="firstname" required>
       </div>
       <div class="inline inline2">
         <label for="lastname"><b>Last Name</b></label><br>
-        <input type="text" placeholder="Enter Last Name" name="last_name" required><br>
+        <input type="text" placeholder="Enter Last Name" name="lastname" required><br>
       </div>
       <label for="email"><b>Email</b></label>
       <input type="email" placeholder="Enter Email" name="email" required>
