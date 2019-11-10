@@ -3,7 +3,7 @@
     //include 'search.php';
 ?>
 <head>
-    <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet">
+    <link href = css/bootstrap.min.css" rel = "stylesheet">
     <link href = "stylesheet.css" rel = "stylesheet">
     <script src="Resources/jquery/jquery-3.3.1.min.js"></script>
     <link rel="shortcut icon" href="Resources/favicon.ico">
@@ -28,7 +28,7 @@
     <script src="Resources/fileUploader/dropzone.js"></script>
 
 
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Resources/dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
     <link href="Resoures/styles.css" rel="stylesheet">
 
@@ -41,22 +41,33 @@
 
 
         <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+        <!-- Collapsible content -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<div class='container'>
+  <div class='content-wrapper'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-12 col-md-8 col-lg-8' style="width:200px;font-size:25px;color:blue;">
+        Search your result Here
+      </div>
+      <div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
 
-        <form class="form-inline ml-auto" >
-            
-                <div class="col-md-5 mb-3" style="margin-top:50px;margin-left:350px;position: fixed;">
-                <input class="form-control" type="text" name = "search" placeholder="Search" aria-label="Search">
-                </div>
-                <div class="col-md-5 mb-3" style="margin-top:50px;position: fixed;margin-left:900px">
-                <button id = "submit" class="btn btn-primary" type="submit" name="submit-search">Search</button>
-                </div>
-             
+        <form class='navbar-form'>
+          <div class='input-group'>
+            <input class='form-control' type='text' name='search' placeholder='Search....' aria-label="Search" style="width:200px;"/>
+            <span class="input-group-btn">
+              <button  id = "submit" type='submit' class='btn btn-default' name="submit-search">
+                <span class='glyphicon glyphicon-search'></span>
+              </button>
+            </span>
+
+          </div>
         </form>
 
-        </div>
-        <!-- Collapsible content -->
-       
+      </div>
+    </div>
+  </div>
+</div>
         
 
     </form>
