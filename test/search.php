@@ -43,9 +43,10 @@ if ($_SESSION['logged_in']==True){
 <div class = "artical-container">
     <?php
         if(isset($_POST['submit-search'])){
-            
-            
-            $search = mysqli_real_escape_string($conn,$_POST['search']);
+            $connection = $conn;
+            $post = $_POST['search'];
+            Function->Search($connection,$post);
+           /* $search = mysqli_real_escape_string($conn,$_POST['search']);
             $sql = "SELECT * FROM project_link WHERE name LIKE '%$search%' ";
             $result = mysqli_query($conn,$sql);
             $quaryResult = mysqli_num_rows($result);
@@ -63,7 +64,7 @@ if ($_SESSION['logged_in']==True){
                 }
             }else{
                 echo "there is no result matching your result";
-            }
+            }*/
 
 
         }
