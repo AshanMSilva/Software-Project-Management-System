@@ -5,15 +5,16 @@ if ($_SESSION['logged_in']==True){
 	if(isset($_POST['upload'])){
 		$db = mysqli_connect("localhost","root","","git");
 		$text = $_POST['text'];
-		$re = substr($text, 0, 7);
+		//$re = substr($text, 0, 7);
 		//$text = urlencode($text);
 		//$text = mysql_real_escape_string($text);
 		$Price = $_POST['Name'];
-		if ( $text!=NUll  and $Price!=Null ){
+		Function->Addlinks($text,$Price);
+		/*if ( $text!=NUll  and $Price!=Null ){
 			
 			$sql = "INSERT INTO project_link( name,link) VALUES ('$Price','$text');";
 			mysqli_query($db,$sql);
-		}
+		}*/
 		
 	}
 
