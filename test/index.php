@@ -1,10 +1,13 @@
 <?php
+session_start();
+if ($_SESSION['logged_in']==True){
+
     include 'header.php';
     //include 'search.php';
 ?>
 <head>
     <link href = css/bootstrap.min.css" rel = "stylesheet">
-    <link href = "stylesheet.css" rel = "stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="Resources/jquery/jquery-3.3.1.min.js"></script>
     <link rel="shortcut icon" href="Resources/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -21,7 +24,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" type="text/css" href="style.css">
 
     <!-- File uploader plugin -->
 
@@ -33,6 +36,7 @@
     <link href="Resoures/styles.css" rel="stylesheet">
 
 </head>
+<body style = "background-image: url(banner.jpg);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-color: #464646;">
  <form action= "search.php" method="POST" >
      <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4">
@@ -43,11 +47,11 @@
         <!-- Collapsible content -->
         
         <!-- Collapsible content -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 <div class='container'>
   <div class='content-wrapper'>
     <div class='row'>
-      <div class='col-xs-12 col-sm-12 col-md-8 col-lg-8' style="width:200px;font-size:25px;color:blue;">
+      <div class='col-xs-12 col-sm-12 col-md-8 col-lg-8' style="width:200px;font-size:25px;color:white;">
         Search your result Here
       </div>
       <div class='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
@@ -92,5 +96,12 @@
 
     ?> 
     </div>  
-</body>
+</body><?php
+}
+else{
+    header("Location:index.php");
+}
+
+
+?>
 </html>
