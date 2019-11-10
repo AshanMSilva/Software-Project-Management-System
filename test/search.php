@@ -1,4 +1,8 @@
 <?php
+session_start();
+if ($_SESSION['logged_in']==True){
+
+
  include 'header.php';
 
 ?>
@@ -30,7 +34,7 @@
     <link href="Resources/dist/css/jquery.dm-uploader.min.css" rel="stylesheet">
     <link href="Resoures/styles.css" rel="stylesheet">
 </head>
-<body>
+<body style = "background-image: url(banner.jpg);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-color: #464646;">
 <nav class="navbar navbar-dark bg-dark justify-content-between">
     <a class="navbar-brand">
     <img classs="img-responsive" width="" height="75px"  src="Screenshot(6).jpg" >
@@ -67,3 +71,9 @@
         ?>
 </div>
 </body>
+<?php
+    }
+    else{
+        header("Location:index.php");
+    }
+?>
