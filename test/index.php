@@ -7,6 +7,7 @@ if ($_SESSION['logged_in']==True){
 ?>
 <head>
     <link href = css/bootstrap.min.css" rel = "stylesheet">
+   <script src="https://kit.fontawesome.com/d977be036d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="Resources/jquery/jquery-3.3.1.min.js"></script>
     <link rel="shortcut icon" href="Resources/favicon.ico">
@@ -37,6 +38,13 @@ if ($_SESSION['logged_in']==True){
 
 </head>
 <body style = "background-image: url(banner.jpg);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-color: #464646;">
+ <header>
+
+<div class="logo" style="background:transparent;color:white;">
+	<h1><i class="fab fa-accusoft"></i>CodeLab</h1>
+
+</div>
+</header>
  <form action= "search.php" method="POST" >
      <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4">
