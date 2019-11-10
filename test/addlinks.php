@@ -1,4 +1,7 @@
 <?php
+session_start();
+if ($_SESSION['logged_in']==True){
+//if ( (!isset($_SESSION['logged_in'])) or $_SESSION['logged_in']==false){
 	if(isset($_POST['upload'])){
 		$db = mysqli_connect("localhost","root","","git");
 		$text = $_POST['text'];
@@ -14,8 +17,17 @@
 		
 	}
 
+/*else{
+	header("Location:index.php");
+}
+	if (isset($_SESSION['current_user'])){
+		$_SESSION['logged_in'] = True;
+	}
+		//echo "<script> window.history.back(); </script>";
+	header("Location:home.php");*/
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +67,7 @@
 
 
 </style>
-<body>
+<body style = "background-image: url(banner.jpg);background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-color: #464646;">
 <div id = "content"  >
     <h1 id = "head"></h1>
 	<form method = "post" action = "addlinks.php" enctype = "multipart/form-data">
@@ -75,4 +87,12 @@
 </div> 
 
 </body>
+<?php
+}
+else{
+	header("Location:index.php");
+}
+
+
+?>
 </html>
