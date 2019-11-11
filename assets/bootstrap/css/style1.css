@@ -1,0 +1,205 @@
+
+@media (min-width: 1200px){
+	.form-container div{
+	width:50%;
+	float: left; 
+	}
+	.form-container div input[type=text], .form-container div input[type=password], .form-container div input[type=tel], .form-container div input[type=number]{
+		width:99%; 
+		margin:none;
+		border:none;
+		
+	}
+	.inline input[type=text], .inline input[type=password], .inline input[type=tel], .inline input[type=number]{
+		float: left;
+	}
+
+	.inline2 input[type=text], .inline2 input[type=password], .inline2 input[type=tel], .inline2 input[type=number]{
+		float: right;
+	}
+	.form-containersignup input[type=text], .form-containersignup input[type=password], .form-containersignup input[type=tel], .form-containersignup input[type=number] {
+  		width: 50%;
+  		padding: 15px;
+  		margin: 5px 0 22px 0;
+  		border: none;
+  		background: #f1f1f1;
+	}
+	.form-containersignup>.btn {
+  		background-color: #4CAF50;
+ 		color: white;
+  		padding: 16px 20px;
+  		border: none;
+  		cursor: pointer;
+  		width: 50%;
+  		margin-bottom:10px;
+ 		opacity: 0.8;
+	}
+		
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Header */
+
+	.form-container div{
+	width:50%;
+	float: left; 
+	}
+	.form-container div input[type=text], .form-container div input[type=password], .form-container div input[type=tel], .form-container div input[type=number]{
+		width:99%; 
+		margin:none;
+		border:none;
+	}
+	.inline input[type=text], .inline input[type=password],.inline input[type=tel], .inline input[type=number]{
+		float: left;
+	}
+
+	.inline2 input[type=text], .inline2 input[type=password], .inline2 input[type=tel], .inline2 input[type=number]{
+		float: right;
+	}
+	.form-containersignup input[type=text], .form-containersignup input[type=password] , .form-containersignup input[type=tel], .form-containersignup input[type=number] {
+  		width: 50%;
+  		padding: 15px;
+  		margin: 5px 0 22px 0;
+  		border: none;
+  		background: #f1f1f1;
+	}
+	.form-containersignup>.btn {
+  		background-color: #4CAF50;
+ 		color: white;
+  		padding: 16px 20px;
+  		border: none;
+  		cursor: pointer;
+  		width: 50%;
+  		margin-bottom:10px;
+ 		opacity: 0.8;
+	}
+
+  /* End Header */
+}
+
+
+/********** Small devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+	.form-container div{
+	width:50%;
+	float: left; 
+	}
+	.form-container div input[type=text], .form-container div input[type=password] , .form-container div input[type=tel], .form-container div input[type=number]{
+		width:99%; 
+		margin:none;
+		border:none;
+	}
+	.inline input[type=text], .inline input[type=password], .inline input[type=tel], .inline input[type=number]{
+		float: left;
+	}
+
+	.inline2 input[type=text], .inline2 input[type=password], .inline2 input[type=tel], .inline2 input[type=number]{
+		float: right;
+	}
+	.form-containersignup input[type=text], .form-containersignup input[type=password], .form-containersignup input[type=tel], .form-containersignup input[type=number] {
+  		width: 50%;
+  		padding: 15px;
+  		margin: 5px 0 22px 0;
+  		border: none;
+  		background: #f1f1f1;
+	}
+	.form-containersignup>.btn {
+  		background-color: #4CAF50;
+ 		color: white;
+  		padding: 16px 20px;
+  		border: none;
+  		cursor: pointer;
+  		width: 50%;
+  		margin-bottom:10px;
+ 		opacity: 0.8;
+	}	
+}
+@media (max-width: 767px) {
+	
+	
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+
+/* The popup form - hidden by default */
+.form-popup1 {
+	display: none;
+	position: fixed;
+	top: 50px;
+	left: 0;
+  	width: 100%; /* Full width */
+  	height: 100%;
+  	text-align: center;
+  	overflow: auto;
+  /*border: 3px solid #f1f1f1;*/
+  z-index: 1;
+}
+
+/* Add styles to the form container */
+.form-container {
+	display: inline-block;
+  max-width: 310px;
+  padding: 10px;
+  background-color: white;
+  color: darkblue;
+  
+
+}
+.form-container label{
+	color: red;
+}
+.form-containersignup {
+  max-width: 600px;
+  display: inline-block;
+  padding: 10px;
+  background-color: white;
+
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password], .form-container input[type=email], .form-containersignup input[type=tel], .form-containersignup input[type=number] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus, .form-container input[type=email]:focus, .form-containersignup input[type=tel]:focus, .form-containersignup input[type=number]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+/*.form-container input[type=text], .form-container input[type=password]{
+	display: inline-block;
+}
+
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 95%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover{
+  opacity: 1;
+}
+.form-container h1{
+	color: red;
+}
+
+
+
+
