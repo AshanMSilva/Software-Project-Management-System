@@ -5,7 +5,11 @@ require('includes/Client.php');
 require('includes/Employee.php');
 require('includes/Admin.php');
 session_start();
+
 		if ($_SESSION['logged_in']==true){
+			$current_user=$_SESSION['current_user'];
+			$user_id=$current_user->get_id();
+			$_SESSION['user_id']=$user_id;
 ?>
 <html>
 	<head>
@@ -21,10 +25,10 @@ session_start();
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-					<a href="index.html" class="logo">CodeLab</a>
+					<a href="home.php" class="logo">CodeLab</a>
 					<nav id="nav">
-						<a href="index.html"><i class="fas fa-home"></i> Home</a>
-						<a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
+						<a href="home.php"><i class="fas fa-home"></i> Home</a>
+						<a href="Home_project.php"><i class="fas fa-project-diagram"></i> Projects</a>
 						<a href="contact.html"><i class="fas fa-address-card"></i> Contact Us</a>
 						<a href="account.php"><i class="fas fa-user-circle" style="font-size: 20px;"></i></a>
 						<a href="logout.php"><i class="fas fa-sign-out-alt" style="font-size: 20px;"></i></a>
@@ -156,5 +160,11 @@ CodeLab was started in Oct 2015 with small desktop software designing and now ha
 	else{
 		header("Location:index.php");
 	}
-?>
+
+ if (isset($_SESSION["alert"])): ?>
+			<script type="text/javascript">
+				alert("<?php echo ($_SESSION["alert"]); ?>");
+			</script>
+			<?php unset($_SESSION['alert']); ?>
+		<?php endif; ?>?>
 </html>

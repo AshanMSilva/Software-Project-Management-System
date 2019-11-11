@@ -16,7 +16,7 @@ if ($_SESSION['logged_in']==True){
 		//$text = urlencode($text);
 		//$text = mysql_real_escape_string($text);
 		$Price = $_POST['Name'];
-		$system->Addlinks($text,$Price);
+		$system->Addlinks($text,$Price,$connection);
 		/*if ( $text!=NUll  and $Price!=Null ){
 			
 			$sql = "INSERT INTO project_link( name,link) VALUES ('$Price','$text');";

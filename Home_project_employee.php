@@ -36,22 +36,20 @@ if ($_SESSION['logged_in']==true): ?>
     
 
     <div class="full-screen">
-      <div style="background-color: black;">
+      <div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="5000">
 
-        <!--<div class="carousel-inner">
+        <div class="carousel-inner" role="listbox">
           <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(assets/images/mbr-1920x1278.jpg);">
             <div class="container container-slide">
               <div class="image_wrapper">
                 <div class="mbr-overlay">
                 </div>
                 <img src="assets/images/mbr-1920x1278.jpg" title="FULL SCREEN SLIDER">
-                <div class="carousel-caption justify-content-center">-->
-                  <div class="align-center">
-                  <button class="btn btn-success display-4" onclick="window.location.href='getDetailsProject.php'">New Project</button>
-                  </div>
+                <div class="carousel-caption justify-content-center">
+                  <div class="col-15 align-center">
                     <!-- <div class="mbr-section-btn" buttons="0">
                       <a class="btn btn-success display-4" id="createProject">New Project</a>
-                        
+                      </div>  
                      </div> -->
                      <?php
 
@@ -60,37 +58,37 @@ $user_id=$_SESSION['user_id'];
 
 $user_id=$user_id;
 
-$sql="SELECT project.project_id,project.title,project.progress, project.category,project.pro_status from project,owns where owns.client_id=$user_id and owns.project_id=project.project_id order by start_date desc";
+$sql="SELECT project.project_id,project.title,project.progress, project.category,project.pro_status from project,develops where develops.developer_id=$user_id and develops.project_id=project.project_id";
 $proResult = $connection->query($sql);
 ?>
-<div class="row align-center">
+
 <?php while($row = $proResult->fetch_assoc()): ?>
     <?php
     $project_id=$row["project_id"];
+    echo $project_id;
     $title=$row["title"];
     $progress=$row["progress"];
     $category=$row["category"];
     $pro_status=$row["pro_status"];
     ?>
-<div class="col-3 " style="display:block; color: white;border-width: 1px; border-color: white;padding-bottom: 10px;border:2px solid red;">
+<div class="projectdetails">
     <h2> <?php echo $title;?><h2>   
     <h2> <?php echo $progress."%"; ?><h2> 
     <h2> <?php echo $category;?><h2>
     <h2> <?php echo $pro_status;?><h2>
 
 
-    
-    <ul class="actions">
-        <li><a href="projectDetailsUser2.php?project_id=<?php echo $project_id;?>" >View</a></li><br>
-    </ul>
     </div>
+    <ul class="actions">
+        <li><a href="projectDetailsDev2.php?project_id=<?php echo $project_id;?>" >View</a></li><br>
+    </ul>
+
 <?php endwhile;?>
-</div>
                    
-              <!--   </div>
+                 </div>
                </div>
              </div>
-           </div>-->
+           </div>
 
       </div>
     </div>
