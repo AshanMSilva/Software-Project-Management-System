@@ -12,6 +12,7 @@ class System implements Observer{
 	}
 
 	public function Login($email,$pssword,$connection){
+		$this->createsession();
 		$email = $email;
 		$pssword = $pssword;
 		$queryclient = "SELECT client_id, firstname, lastname, email, contact_no, pssword FROM client where email = '{$email}'" ;
@@ -115,6 +116,7 @@ class System implements Observer{
 		} 
 		}
 	public function Signup($firstname,$lastname,$email,$contact_no,$pssword,$acc_no,$psw,$repsw,$connection){
+		$this->createsession();
 		
 		$pattern = '/^(?=.*[!@#$%^&*+=\/><.,:;])(?=.*[0-9])(?=.*[A-Z]).{5,}$/';
 
@@ -189,6 +191,7 @@ class System implements Observer{
 		$user->receive_notification($msg);
 	}
 	public function Search($conn,$post ){
+		$this->createsession();
             $search = mysqli_real_escape_string($conn,$post);
             $sql = "SELECT * FROM project_link WHERE name LIKE '%$search%' ";
             $result = mysqli_query($conn,$sql);
@@ -213,12 +216,106 @@ class System implements Observer{
 	}
 
 	public function Addlinks($text,$Price){
+		$this->createsession();
     	if ( $text!=NUll  and $Price!=Null ){
 			
         	$sql = "INSERT INTO project_link( name,link) VALUES ('$Price','$text');";
         	mysqli_query($db,$sql);
     	}
     
+	}
+	public function Email_Verification($rand_num,$current_user,$pssword,$email,$veri_code,$connection){
+		$this->createsession();
+		if($rand_num==$veri_code){
+				$firstname = $current_user->get_firstname();
+				$lastname = $current_user->get_lastname();
+				$contact_no = $current_user->get_contact_no();
+				$acc_no = $current_user->get_acc_no();
+
+					$query = "INSERT INTO client (firstname, lastname, email, contact_no, pssword, acc_no) VALUES('{$firstname}', '{$lastname}', '{$email}', {$contact_no}, '{$pssword}', '{$acc_no}')";
+					mysqli_query($connection, $query);
+					if (isset($_SESSION['current_user'])){
+						$_SESSION['logged_in'] = True;
+					}
+					$queryclient = "SELECT client_id FROM client where email = '{$email}'";
+					$resultclient = mysqli_query($connection, $queryclient);
+					if(mysqli_num_rows($resultclient)==1){
+						$recordclient = mysqli_fetch_assoc($resultclient);
+						$client_id = $recordclient['client_id'];
+						$current_user->set_id($client_id);
+					}
+					//echo "<script> window.history.go(-3); </script>";
+					header("Location: home.php");
+					//header("Location:homepage.php");
+				}
+					//$query = "INSERT INTO employee (first_name, last_name, email, contact_number, password) VALUES('{$first_name}', '{$last_name}', '{$email}', {$contact_number}, '{$password}')";
+					//mysqli_query($connection,$query);
+				
+				
+			//mysqli_query($connection,$query);
+				//header("Location:homepage.php");
+			
+
+			
+			else{
+				$error="Invalid Verification Code. Enter the code correctly or Try re-sending the code.";
+				$_SESSION['alert']=$error;
+				echo "<script> window.history.back(); </script>";
+			}
+	}
+	public function Logout(){
+		$this->createsession();
+		$_SESSION['logged_in']=false;
+		unset($_SESSION['current_user']);
+		
+	}
+	public function SendMail($email){
+		$this->createsession();
+		$header = "From: ashansilva.17@cse.mrt.ac.lk"; 	// sender email
+		$rand_num = substr(str_shuffle("0123456789"),0,5);
+		$msg = "Enter the received verification code at the webpage.\n\nVerification Code: " . "{$rand_num}";
+		if (mail($email, 'CodeLab - Email Verification', $msg, $header)){
+			$_SESSION['rand_num']=$rand_num;
+			echo "<script> window.history.back(); </script>";
+		}
+		else{
+			$msg = "An error occured while sending the email. Try re-sending the Verification Code. Check whether the email address is correct. Check your internet connection.";
+			$_SESSION['alert'] = $msg;
+			echo "<script> window.history.back(); </script>";
+		}
+
+	}
+	public function check_email_exit($email,$connection){
+		$this->createsession();
+		$email_exit =true;
+		$queryclient = "SELECT email FROM client WHERE email = '{$email}'";
+		$resultclient = mysqli_query($connection, $queryclient);
+
+		$queryemployee = "SELECT email FROM employee where email = '{$email}'";
+		$resultemployee = mysqli_query($connection,$queryemployee);
+
+		$queryadmin = "SELECT email FROM admin where email = '{$email}'";
+		$resultadmin = mysqli_query($connection,$queryadmin);
+			//while($recordemployee = mysqli_fetch_assoc($resultemployee) && $notlogged){
+		if(mysqli_num_rows($resultclient)==0 && mysqli_num_rows($resultemployee)==0 && mysqli_num_rows($resultadmin)==0){
+			$email_exit=false;
+		}
+		return $email_exit;
+		
+	}
+	public function createsession(){
+		if(version_compare(phpversion(), '5.4.0','<')){
+			if(session_id()==''){
+				session_start();
+			}
+
+		}
+		else{
+			if(session_status()==PHP_SESSION_NONE){
+				session_start();
+			}
+
+		}
 	}
 
 }

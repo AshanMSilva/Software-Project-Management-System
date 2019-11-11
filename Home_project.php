@@ -1,5 +1,5 @@
 <?php session_start();
-if ( (!isset($_SESSION['logged_in'])) or $_SESSION['logged_in']==false): ?>
+if ($_SESSION['logged_in']==true){?>
 <!DOCTYPE html>
 <html  >
 <head>
@@ -24,13 +24,6 @@ if ( (!isset($_SESSION['logged_in'])) or $_SESSION['logged_in']==false): ?>
   
   
 </head>
-<?php $_SESSION['logged_in']=false; ?>
-    <?php if (isset($_SESSION["alert"])): ?>
-      <script type="text/javascript">
-        alert("<?php echo ($_SESSION["alert"]); ?>");
-      </script>
-      <?php unset($_SESSION['alert']); ?>
-    <?php endif; ?>
 <body>
   <section class="carousel slide cid-rASKeBMenI" data-interval="false" id="slider1-6">
 
@@ -97,6 +90,8 @@ if ( (!isset($_SESSION['logged_in'])) or $_SESSION['logged_in']==false): ?>
   
 </body>
 </html>
-<?php else: ?>
-  <?php header("Location: home.php"); ?>
-<?php endif; ?>
+<?php 
+}
+else{
+  header("Location: index.php");
+ } ?>

@@ -1,3 +1,6 @@
+<?php 
+require('includes/System.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +9,8 @@
 <body>
 	<?php
 			session_start();
-			$_SESSION['logged_in']=false;
-			unset($_SESSION['current_user']);
+			$system=new System();
+			$system->Logout();
 			//session_unset();
 			//session_destroy();
 			header("Location: index.php");
