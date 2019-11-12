@@ -1,5 +1,5 @@
 <?php
-require ('includes/ConnectDb.php');
+require ('includes/ConnectDB.php');
 	$connect = ConnectDb::getInstance();
 	$connection = $connect->getConnection();
 	// $connection = mysqli_connect("localhost","root","","Lazarus");
