@@ -8,6 +8,7 @@ CREATE TABLE admin(
     lastname varchar(50),
     email varchar(75),
     pssword varchar(150),
+    acc_no numeric(20),
     PRIMARY KEY(admin_id) 
 );
 
@@ -32,6 +33,7 @@ CREATE TABLE employee(
     email varchar(75),
     contact_no numeric(15),
     pssword varchar(150),
+    acc_no numeric(20),
     PRIMARY KEY(employee_id)
 );
 
@@ -43,8 +45,7 @@ CREATE TABLE project(
     progress numeric(3),
     category varchar(75),
     keywords varchar(200),
-    documents varchar(500),
-    location varchar(200),
+    link varchar(200),
     due_date date,
     PRIMARY KEY(project_id)
 );
@@ -109,3 +110,10 @@ CREATE TABLE developer_feedback(
     FOREIGN KEY (developer_id) REFERENCES developer(developer_id) ON DELETE CASCADE
 
 );
+
+/*CREATE TABLE project_link(
+    project_id int,
+    link varchar(150),
+    PRIMARY KEY (project_id),
+    FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE CASCADE
+);*/
