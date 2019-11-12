@@ -1,11 +1,6 @@
 <?php session_start();
-include_once 'includes/connection.php';
-require 'includes/User.php';
-require 'includes/Client.php';
-require 'includes/Admin.php';
-require 'includes/Employee.php';
-require 'includes/System.php';
-if ($_SESSION['logged_in']==true): ?>
+if ($_SESSION['logged_in']==true): 
+  include_once 'includes/connection.php';?>
 <!DOCTYPE html>
 <html  >
 <head>
@@ -32,84 +27,72 @@ if ($_SESSION['logged_in']==true): ?>
 </head>
 <body>
   <section class="carousel slide cid-rASKeBMenI" data-interval="false" id="slider1-6">
+<?php
+//$project=$_GET["project_id"];
 
+?>
     
 
     <div class="full-screen">
-      <div style="background-color: black;">
+      <div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="5000">
 
-        <!--<div class="carousel-inner">
+        <div class="carousel-inner" role="listbox">
           <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(assets/images/mbr-1920x1278.jpg);">
             <div class="container container-slide">
               <div class="image_wrapper">
                 <div class="mbr-overlay">
                 </div>
                 <img src="assets/images/mbr-1920x1278.jpg" title="FULL SCREEN SLIDER">
-                <div class="carousel-caption justify-content-center">-->
-                  <div class="align-center">
-                  <button class="btn btn-success display-4" onclick="window.location.href='getDetailsProject.php'">New Project</button>
-                  </div>
-                    <!-- <div class="mbr-section-btn" buttons="0">
-                      <a class="btn btn-success display-4" id="createProject">New Project</a>
+                <div class="carousel-caption justify-content-center">
+                  <div class="col-10 align-center">
                         
-                     </div> -->
-                     <?php
+                     <?php 
+                     if($connection === false){
+                        die("ERROR: Could not connect. " . mysqli_connect_error());
+                    }
+                    else{
+                        $project_id=$_GET["project_id"];
+                        // $project_id=4;
+                       
+                        $_SESSION["project_id"]=$project_id;
+                        $sql="SELECT title, category,keywords,due_date,progress FROM project NATURAL JOIN develops where project_id=$project_id";
+                        $sql="SELECT project.title,project.progress, project.category,project.pro_status,project.due_date,project.keywords from project,develops where develops.project_id=project.project_id and project.project_id=$project_id"
 
+                        $proResult = $connection->query($sql);
+                           
+                        $row = $proResult->fetch_assoc();
+                        $title=$row["title"];
+                        $progress=$row["progress"];
+                        $category=$row["category"];
+                        $keywords=$row["keywords"];
+                        $due_date=$row["due_date"];
+                        
+                    } 
+                    
+                    // <div>
 
-$user_id=$_SESSION['user_id'];
+                     echo $title;
+                     
+                     echo $category;
+                     echo $keywords;
+                     echo $due_date;
 
-$user_id=$user_id;
-
-$sql="SELECT project.project_id,project.title,project.progress, project.category,project.pro_status from project,owns where owns.client_id=$user_id and owns.project_id=project.project_id order by start_date desc";
-$proResult = $connection->query($sql);
-?>
-<div class="row align-center">
-<?php while($row = $proResult->fetch_assoc()): ?>
-    <?php
-    $project_id=$row["project_id"];
-    $title=$row["title"];
-    $progress=$row["progress"];
-    $category=$row["category"];
-    $pro_status=$row["pro_status"];
-    ?>
-<div class="col-3 " style="display:block; color: white;border-width: 1px; border-color: white;padding-bottom: 10px;border:2px solid red;">
-    <h2> <?php echo $title;?><h2>   
-    <h2> <?php echo $progress."%"; ?><h2> 
-    <h2> <?php echo $category;?><h2>
-    <h2> <?php echo $pro_status;?><h2>
-
-
+                     //project should be displyed
+                     ?>
+                    <button type="button"class="btn btn-success display-4" id="changeProjectdetails"onclick="window.location.href='changeProject_UpdateProgress.php'" >Update Progress</button>
     
-    <ul class="actions">
-        <li><a href="projectDetailsUser2.php?project_id=<?php echo $project_id;?>" >View</a></li><br>
-    </ul>
-    </div>
-<?php endwhile;?>
-</div>
-                   
-              <!--   </div>
+                   </div>
+                 </div>
                </div>
              </div>
-           </div>-->
+           </div>
 
       </div>
     </div>
 
-  <div class="form-popup" id="projectName">
-        <form action="getprojectDetails.php" class="form-container" method="post">
-
-            <label for="name"><b><h1>Project Name</h1></b></label>
-            <input type="text" placeholder="Enter Name" name="name" required>
-
-
-            <button type="submit" class="btn">Create</button>
-            <button type="button" id="projectNameCancelButton" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-</div>
 
 
 </section>
-
 
 
   <script src="assets/web/assets/jquery/jquery.min.js"></script>
@@ -132,5 +115,5 @@ $proResult = $connection->query($sql);
 </body>
 </html>
 <?php else: ?>
-  <?php header("Location: index.php"); ?>
+  <?php header("Location: home.php"); ?>
 <?php endif; ?>

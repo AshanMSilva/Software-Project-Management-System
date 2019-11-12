@@ -23,9 +23,9 @@ session_start();
 					<a href="index.html" class="logo">CodeLab</a>
 					<nav id="nav">
 						<a href="home_admin.php"><i class="fas fa-home"></i>Home</a>
-						<a href="addlinks.php"><i class="fas fa-project-diagram"></i>Projects</a>
-						<a href="project_admin.php"><i class="fas fa-project-diagram"></i>Upcoming Projects</a>
-						<a href="project_admin.php"><i class="fas fa-users"></i>Staff</a>
+						<a href="project_admin.php"><i class="fas fa-project-diagram"></i>Projects</a>
+						<a href="upcoming.php"><i class="fas fa-project-diagram"></i>Upcoming Projects</a>
+						<a href="staff.php"><i class="fas fa-users"></i>Staff</a>
 						<a href="account.php"><i class="fas fa-user-circle" style="font-size: 20px;"></i></a>
 						<a href="logout.php"><i class="fas fa-sign-out-alt" style="font-size: 20px;"></i></a>
 					</nav>

@@ -24,6 +24,7 @@ session_start();
 					<nav id="nav">
 						<a href="home_employee.php"><i class="fas fa-home"></i>Home</a>
 						<a href="project_search.php"><i class="fas fa-project-diagram"></i>Projects</a>
+						<a href="Home_project_employee.php"><i class="fas fa-project-diagram"></i>MyProjects</a>
 						<a href="account_employee.php"><i class="fas fa-user-circle" style="font-size: 20px;"></i></a>
 						<a href="logout.php"><i class="fas fa-sign-out-alt" style="font-size: 20px;"></i></a>
 					</nav>

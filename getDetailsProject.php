@@ -1,10 +1,4 @@
 <?php session_start();
-include_once 'includes/connection.php';
-require 'includes/User.php';
-require 'includes/Client.php';
-require 'includes/Admin.php';
-require 'includes/Employee.php';
-require 'includes/System.php';
 if ($_SESSION['logged_in']==true): ?>
 <!DOCTYPE html>
 <html  >
@@ -28,84 +22,95 @@ if ($_SESSION['logged_in']==true): ?>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
   
   
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=date], select {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+} */
+</style>
   
 </head>
 <body>
   <section class="carousel slide cid-rASKeBMenI" data-interval="false" id="slider1-6">
-
-    
-
     <div class="full-screen">
-      <div style="background-color: black;">
+      <div class="mbr-slider slide carousel" data-pause="true" data-keyboard="false" data-ride="carousel" data-interval="5000">
 
-        <!--<div class="carousel-inner">
+        <div class="carousel-inner" role="listbox">
           <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false" style="background-image: url(assets/images/mbr-1920x1278.jpg);">
             <div class="container container-slide">
               <div class="image_wrapper">
                 <div class="mbr-overlay">
                 </div>
                 <img src="assets/images/mbr-1920x1278.jpg" title="FULL SCREEN SLIDER">
-                <div class="carousel-caption justify-content-center">-->
-                  <div class="align-center">
-                  <button class="btn btn-success display-4" onclick="window.location.href='getDetailsProject.php'">New Project</button>
-                  </div>
-                    <!-- <div class="mbr-section-btn" buttons="0">
-                      <a class="btn btn-success display-4" id="createProject">New Project</a>
+                <div class="carousel-caption justify-content-center">
+
+                  <div class="col-10 align-center">
+                  <form action="createProject_process.php" method="post">
+                          <label for="title" ><b><h3>Title</h3></b></label>
+                        <input type="text" placeholder="Title" name="title" required>
+
+                        <br><br>
+
+                        <label for="category" ><b><h3>Category</h3></b></label>
+                        <input type="text" placeholder="Category" name="category" required>
+                        <br><br>
+
+                        <label for="keywords"><b><h3>Key Words</h3></b></label>
+                        <input type="text" placeholder="Project Discription" name="keywords" required>
+                        <br><br>
                         
-                     </div> -->
-                     <?php
+                        <label for="date"><b><h3>Due Date</h3></b></label><br>
+                        <input type="date"  name="due_date" required>
+                        <br><br>
 
-
-$user_id=$_SESSION['user_id'];
-
-$user_id=$user_id;
-
-$sql="SELECT project.project_id,project.title,project.progress, project.category,project.pro_status from project,owns where owns.client_id=$user_id and owns.project_id=project.project_id order by start_date desc";
-$proResult = $connection->query($sql);
-?>
-<div class="row align-center">
-<?php while($row = $proResult->fetch_assoc()): ?>
-    <?php
-    $project_id=$row["project_id"];
-    $title=$row["title"];
-    $progress=$row["progress"];
-    $category=$row["category"];
-    $pro_status=$row["pro_status"];
-    ?>
-<div class="col-3 " style="display:block; color: white;border-width: 1px; border-color: white;padding-bottom: 10px;border:2px solid red;">
-    <h2> <?php echo $title;?><h2>   
-    <h2> <?php echo $progress."%"; ?><h2> 
-    <h2> <?php echo $category;?><h2>
-    <h2> <?php echo $pro_status;?><h2>
-
-
-    
-    <ul class="actions">
-        <li><a href="projectDetailsUser2.php?project_id=<?php echo $project_id;?>" >View</a></li><br>
-    </ul>
-    </div>
-<?php endwhile;?>
-</div>
-                   
-              <!--   </div>
+                        <button class="btn btn-success display-4" type="submit" class="btn">Done</button>
+                        
+                        <button class="btn btn-success display-4" type="button" onclick="window.location.href='home_project.php'" class="btn cancel" >Cancel</button>
+                </form> 
+                </div>
+                 </div>
                </div>
              </div>
-           </div>-->
+           </div>
 
       </div>
     </div>
 
-  <div class="form-popup" id="projectName">
-        <form action="getprojectDetails.php" class="form-container" method="post">
-
-            <label for="name"><b><h1>Project Name</h1></b></label>
-            <input type="text" placeholder="Enter Name" name="name" required>
-
-
-            <button type="submit" class="btn">Create</button>
-            <button type="button" id="projectNameCancelButton" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-</div>
 
 
 </section>
@@ -132,5 +137,5 @@ $proResult = $connection->query($sql);
 </body>
 </html>
 <?php else: ?>
-  <?php header("Location: index.php"); ?>
+  <?php header("Location: inedex.php"); ?>
 <?php endif; ?>
