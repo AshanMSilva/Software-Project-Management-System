@@ -1,18 +1,16 @@
-<?php
-//require('includes/Observer_Observable.php'); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 </head>
 <body>
 <?php
-class System implements Observer{
+class System{
 
 	public function __construct(){
 	}
 
 	public function Login($email,$pssword,$connection){
-		$this->createsession();
 		$email = $email;
 		$pssword = $pssword;
 		$queryclient = "SELECT client_id, firstname, lastname, email, contact_no, pssword FROM client where email = '{$email}'" ;
@@ -59,12 +57,18 @@ class System implements Observer{
 				}
 			}
 			else{
-				$queryadmin = "SELECT admin_id, firstname, lastname, email, contact_no, pssword FROM admin where email = '{$email}'";
+				
+				$queryadmin = "SELECT admin_id, firstname,lastname,email,pssword FROM admin where email = '{$email}'";
 				$resultadmin = mysqli_query($connection,$queryadmin);
+				//$resultadmin=$connection->query($queryadmin);
 				//while($recordemployee = mysqli_fetch_assoc($resultemployee) && $notlogged){
+				$number=mysqli_num_rows($resultadmin);
 				if(mysqli_num_rows($resultadmin)==1){
+
 					$valid_email = true;
+					
 					$recordadmin = mysqli_fetch_assoc($resultadmin);
+					$email1=$recordadmin['email'];
 					//if($recordemployee['email'] == $email){
 					if($recordadmin['pssword']==sha1($pssword)){
 						$valid_pwd = true;
@@ -187,11 +191,11 @@ class System implements Observer{
 			echo "Your password contains unguarenteed characters";
 		}
 	}
-	public function	notify_user($user, $msg){
-		$user->receive_notification($msg);
-	}
+	//public function	notify_user($user, $msg){
+	//	$user->receive_notification($msg);
+	//}
 	public function Search($conn,$post ){
-		$this->createsession();
+		//$this->createsession();
             $search = mysqli_real_escape_string($conn,$post);
             $sql = "SELECT * FROM project_link WHERE name LIKE '%$search%' ";
             $result = mysqli_query($conn,$sql);
@@ -215,12 +219,12 @@ class System implements Observer{
 
 	}
 
-	public function Addlinks($text,$Price){
+	public function Addlinks($text,$Price,$connection){
 		$this->createsession();
     	if ( $text!=NUll  and $Price!=Null ){
 			
         	$sql = "INSERT INTO project_link( name,link) VALUES ('$Price','$text');";
-        	mysqli_query($db,$sql);
+        	mysqli_query($connection,$sql);
     	}
     
 	}

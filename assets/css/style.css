@@ -1,0 +1,71 @@
+#content{
+  width:500px;
+  margin:20px auto;
+  border: 1px solid #cbcbcb;
+    padding:20px;
+    font-size:20px;
+    background:whitesmoke;
+}
+h1{
+    text-align:center;
+}
+input[type=text]{
+    width:486px;
+    padding:5px;
+    font-size:17px;
+}
+
+input[type=submit]{
+    width:450px;
+    padding:5px;
+    font-size:18px;
+  margin-top:5px;
+  align-content: left;
+}
+textarea{
+    background: #f2f2f2;
+    width:492px;
+    font-size:20px;
+    margin:auto;
+    margin-top:5px;
+}
+input[name=size]{
+    background: #f2f2f2;
+  width:400px;
+
+}
+input[type=file]{
+  border:1px solid black;
+    background: #c0c0cc;
+  width: 495px;
+  align:right;
+  font-size:15px;
+  font-family:Times;
+}
+#notify{
+  color:black;
+  font-size:30px;
+  background:green;
+  text-align:center;
+}
+#notify1{
+  color:black;
+  font-size:25px;
+  background:red;
+  text-align:center;
+}
+#notify2{
+  color:black;
+  font-size:30px;
+  background:green;
+  text-align:center;
+}
+select{
+  width:497px;
+  align:center;
+  height:30px;
+  margin-top:5px;
+  font-family:Times;
+  font-size:20px;
+}
+
