@@ -111,9 +111,9 @@ CREATE TABLE developer_feedback(
 
 );
 
-/*CREATE TABLE project_link(
+CREATE TABLE project_link(
     project_id int,
     link varchar(150),
     PRIMARY KEY (project_id),
     FOREIGN KEY (project_id) REFERENCES project(project_id) ON DELETE CASCADE
-);*/
+);
